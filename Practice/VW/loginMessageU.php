@@ -1,8 +1,7 @@
 
 <?php
-include("../Control/Process2.php");
 
-echo "Please enter all the section for log in";
+echo "DOESN'T MATCH!";
 
 echo "<br>";
 

@@ -28,7 +28,7 @@ include("../Control/Process.php")
                     <td><input type="text" name="uname"></td>
                     <?php
                     if (isset($_REQUEST["submit"])) {
-                    echo $firstName;
+                        echo $firstName;
                     }
                     ?>
                 </tr>
@@ -76,9 +76,9 @@ include("../Control/Process.php")
 
                 <tr>
                     <td> Gender </td>
-                    <td> <input type="radio" name="gender" value="Male">Male</td>
-                    <td> <input type="radio" name="gender" value="Female">Female</td>
-                    <td> <input type="radio" name="gender" value="other">Other</td>
+                    <td> <input type="radio" name="gender" value="Male">Male
+                     <input type="radio" name="gender" value="Female">Female
+                     <input type="radio" name="gender" value="other">Other</td>
                     <td>
                         <?php
                         if (isset($_REQUEST["submit"])) {
@@ -89,6 +89,19 @@ include("../Control/Process.php")
                 </tr>
 
 
+
+                <tr>
+                    <td>Please choose file</td>
+                        <td><input type="file" name="myfile"></td>
+                        <td>
+                        <?php
+                        echo $var_file;
+                        ?>
+                    </td>
+                </tr>
+
+
+
                 <tr>
                     <td><input type="Submit" name="submit"></td>
                 </tr>
@@ -96,6 +109,12 @@ include("../Control/Process.php")
                 <tr>
                     <td> <input type="Submit" name="next" value="Next"> </td>
                 </tr>
+                </td>
+                </tr>
+
+
+             
+               
 
             </table>
     </head>

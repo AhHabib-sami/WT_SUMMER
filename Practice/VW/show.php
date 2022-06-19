@@ -3,8 +3,7 @@
 session_start();
 
 echo "Name is : ".$_SESSION["loginName"];
-echo "<br>User name is: ".$_SESSION["uname"];
-echo "<br>password is: ".$_SESSION["loginpass"];
+echo "<br>password is: ". $_SESSION["loginpass"];
 
 //echo "<br> Your age is: ".$_SESSION["age"];
 //echo "<br> Your selected designation is: ". $_SESSION["gender"];

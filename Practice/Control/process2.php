@@ -35,39 +35,43 @@ session_start();
 // }
 //}
 $err = 0;
-$lname =  $luname = "";
+$lname =  $lpass = "";
 $nameErr = $pasErr = $unameErr = "";
 
 if (isset($_REQUEST["Login"])) {
+    
     $lname = $_REQUEST["loginName"];
-    $luname = $_REQUEST["uname"];
+    $_SESSION["loginName"] = $lname;
+
+    //$luname = $_REQUEST["uname"];
+ 
     $lpass = $_REQUEST["loginpass"];
+    $_SESSION["loginpass"] = $lpass;
     // $_SESSION["loginName"] = $lname;
-    if (empty($lname) || empty($luname) || empty($lpass)) {
-        header("Location: ../VW/loginMessageU.php");
+    if (empty($lname) || empty($lpass)) 
+    {
+        echo "You have to give all the information";
     } 
     else {
-
-        $jsondata = file_get_contents("../data.json");
+        $jsondata = file_get_contents("../data/data.json");
         $phpdata = json_decode($jsondata);
-        foreach ($phpdata as $mydata) {
-            if (($_REQUEST["loginName"] == $mydata->firstname) && ($_REQUEST["uname"] == $mydata->UserName) &&  ($_REQUEST["loginpass"] == $mydata->Password)) {
-                
-                $_SESSION["loginName"] = $_REQUEST["loginName"];
-                $_SESSION["uname"] = $_REQUEST["uname"];
-                $_SESSION["loginpass"] = $_REQUEST["loginpass"];
+
+        foreach ($phpdata as $finaldata) {
+            if (($_REQUEST["loginName"] == $finaldata->firstname) && ($_REQUEST["loginpass"] == $finaldata->Password)) {
+                header("Location: ../VW/loginMessageSu.php");
+                break;
             } 
             else {
                 $err = 1;
             }
         }
-
         if ($err == 1) {
-            header("Location: ../VW/loginMessageU.php");
-        } else {
-            header("Location: ../VW/loginMessageSu.php");
+            echo "not found";
         }
     }
+    //echo $_REQUEST["loginName"];
+
+
 
     // $luname = $_REQUEST["uname"];
     // $_SESSION["uname"] = $luname;
