@@ -8,4 +8,4 @@ echo "<br>"
 
 ?>
 
-<a href = "../VW/Task2.php">Profile</a>
+<a href = "../VW/profile.php">Profile</a>

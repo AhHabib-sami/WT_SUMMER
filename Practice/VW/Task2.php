@@ -1,5 +1,68 @@
 <?php
-include("../Control/Process2.php")
+include("../Control/Process2.php");
+setcookie( "cookie", "welcome", time() + 360000);
+if(($_COOKIE["cookie"]=="welcome"))
+
+{
+
+    echo" we know you sir";
+
+}
+
+else
+
+{
+
+    echo" greetings!";
+
+}
+
+if(($_COOKIE["cookie"]=="hello"))
+
+{
+
+    echo" you have visited us before";
+
+}
+
+else
+
+{
+
+    echo" you have never visited us";
+
+}
+
+if(($_COOKIE["cookie"]=="hello"))
+
+{
+
+    echo" you have visited us before";
+
+}
+
+else
+
+{
+
+    echo" you have never visited us";
+
+}
+if(($_COOKIE["cookie"]=="welcome"))
+
+{
+
+    echo" you have visited us before";
+
+}
+
+else
+
+{
+
+    echo" you have never visited us";
+
+}
 ?>
 
 <html>

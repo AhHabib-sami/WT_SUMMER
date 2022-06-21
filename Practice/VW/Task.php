@@ -6,7 +6,12 @@ include("../Control/Process.php")
 <body>
 
     <head>
-        <h1> Welcome to the registration form</h1>
+
+     
+        <h1 align="center"> Login as a CGA </h1>
+        <br><br>
+        <h1 align = "center">
+        
         <form action="" method="post" enctype="multipart/form-data">
 
             <table>
@@ -88,10 +93,9 @@ include("../Control/Process.php")
                     </td>
                 </tr>
 
-
-
+        
                 <tr>
-                    <td>Please choose file</td>
+                    <td>Please give your NID</td>
                         <td><input type="file" name="myfile"></td>
                         <td>
                         <?php
@@ -111,12 +115,10 @@ include("../Control/Process.php")
                 </tr>
                 </td>
                 </tr>
-
-
-             
-               
+      
 
             </table>
+                    </h1>
     </head>
 </body>
 
