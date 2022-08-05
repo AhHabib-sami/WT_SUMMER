@@ -1,0 +1,38 @@
+
+
+body{
+  background-color: whitesmoke;
+}
+   
+
+.button {
+  background-color: green; /* Green */
+  border: none;
+  color: white;
+  padding: 8px ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  color:yellow; 
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  border-radius: 10px;
+  text-shadow: 50px;
+  font-weight: bold;
+
+}
+.back{
+  color: red;
+ 
+  font-size: 30px;
+  padding: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 30px;
+  align-items : center;
+}
+.back:hover{
+  background-color: yellowgreen;
+  
+}
