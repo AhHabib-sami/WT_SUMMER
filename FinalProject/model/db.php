@@ -22,7 +22,7 @@ class mydb
 
     function insertUser($conn, $tablename, $name, $uname, $pass, $pnum, $email, $age, $gnd, $date, $interest, $var_file)
     {
-        $sqlstr  = "INSERT INTO $tablename (Name ,username , Password, MobileNumber ,Email ,Age ,Gender ,Date_Of_Birth,Interest,File ) VALUES ('$name','$uname','$pass','$pnum','$email','$age','$gnd','$date','$interest','$var_file' )";
+        $sqlstr  = "INSERT INTO $tablename (Name ,username , Password, MobileNumber ,Email ,Age ,Gender ,Date_Of_Birth,Interest,FileName ) VALUES ('$name','$uname','$pass','$pnum','$email','$age','$gnd','$date','$interest','$var_file' )";
 
         if ($conn->query($sqlstr)) {
             echo "data inserted ";
@@ -37,23 +37,47 @@ class mydb
         return $conn->query($sqlstr);
     }
 
-    
-    function CheckUser($conn, $tablename, $name, $pass)
+    function Name($tablename,$conn,$name)
     {
-        $result = $conn->query("SELECT * FROM " . $tablename . " WHERE Name='" . $name . "' AND Password='" . $pass . "'");
+        $sqlstr = "SELECT Name FROM $tablename";
+        return $conn->query($sqlstr);
+
+    }
+    function CheckUser($conn, $tablename, $lname, $lpass)
+    {
+        $result = $conn->query("SELECT * FROM " . $tablename . " WHERE Name='" . $lname . "' AND Password='" . $lpass . "'");
         return $result;
     }
 
+    function UpdateUser($conn, $tablename, $Name, $Username, $Password, $Mobilenumber, $Email,$dateOfBirth,$idNumber){
 
+      
 
-    function UpdateUser($conn, $tablename, $name, $uname, $pass, $pnum, $email, $age, $gnd, $date, $interest, $var_file)
-    {
-        $sql = "UPDATE user SET Name='{$name}', username='{$uname}' ,Password = '{$pass}', MobileNumber = '{$pnum}' ,Email = '{$email}' Age = '{$age}' Gender = '{$gnd}' Date_Of_Birth = '{$date}' Interest = '{$interest}' File = '{$var_file}'  WHERE Name=$name";
+        $sql = "UPDATE user SET Name='{$Name}', username='{$Username}' ,Password = '{$Password}', MobileNumber = '{$Mobilenumber}' ,Email = '{$Email}', Date_Of_Birth = '{$dateOfBirth}' WHERE ID = $idNumber";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Data updated";
-        } else {
-            echo "Data not updated";
+           return true;
+        } 
+        else {
+           return false;
         }
+       
+    }
+
+    function getUser($con,$id){
+        $sql = "select * from user where id='{$id}'";
+        
+        $result = mysqli_query($con, $sql);
+
+        $user = mysqli_fetch_assoc($result);
+        return $user;
+    }
+
+    function loginCheck($tablename,$con,$logname,$logpass)
+    {
+        $sql = "SELECT * FROM $tablename WHERE name='$logname' AND password='$logpass' ";
+        $result = $con->query($sql);
+
+        return $result;
     }
 }

@@ -5,7 +5,7 @@ include("../Control/reg_process.php");
 <br>
 
 <body>
-<link rel="stylesheet" href="../css/mycss.css">
+    <link rel="stylesheet" href="../css/mycss.css">
     <table align="center">
         <th align="right"> অর্থ বিভাগ, অর্থ মন্ত্রণালয় </th>
     </table>
@@ -16,37 +16,45 @@ include("../Control/reg_process.php");
 
     <h1 align="center">
 
-        <form action="" method="post" enctype="multipart/form-data" onsubmit=" return formcheck()">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <table align="center">
                 <tr>
                     <td> Name </td>
-                    <td><input type="text" name="fname"></td>
-
+                    <td><input type="text" name="fname" placeholder="Name" id="name" onkeyup="checkName()"></td>
+                    <td>
+                        <p id="fnameError"></p>
+                    </td>
 
                 </tr>
 
                 <tr>
                     <td>User Name </td>
-                    <td><input type="text" name="uname"></td>
+                    <td><input type="text" name="uname" placeholder="user name" id="uname" onkeyup="checkUserName()"></td>
+                    <td>
+                        <p id="userNameError"></p>
+                    </td>
 
                 </tr>
 
                 <tr>
                     <td> Password </td>
-                    <td><input type="password" name="pass"></td>
+                    <td><input type="password" name="pass" placeholder="password" id="pass" onkeyup="checkPass()"></td>
+                    <td>
+                        <p id="passError"></p>
+                    </td>
 
 
                 </tr>
 
 
                 <tr>
-                    <td> Field of interest</td>
+                    <td>Department Head of</td>
                     <td>
 
-                        <input type="checkbox" name="LIT" value="Literature"> Literature
-                        <input type="checkbox" name="MAT" value="Mathematics">Mathematics
-                        <input type="checkbox" name="SC" value="Science">Science
+                        <input type="checkbox" name="LIT" value="CAG" id="jp"> Comptroller And Audior General of Bangladesh
+                        <input type="checkbox" name="MAT" value="DC" id="sp">Division Controller
+                        <input type="checkbox" name="SC" value="AUD" id="pl">Auditor
 
 
                     </td>
@@ -58,7 +66,11 @@ include("../Control/reg_process.php");
                     <td> Mobile Number</td>
                     <td><select>
                             <option value="code"> +880
-                                <input type="text" name="phone"></td>
+                                <input type="text" name="phone" placeholder="Mobile Number" id="mobile" onkeyup="checkPhone()"></td>
+                    <td>
+                        <p id="mobileError"></p>
+                    </td>
+
                 </tr>
 
 
@@ -66,15 +78,20 @@ include("../Control/reg_process.php");
                 <tr>
                     <td> Email</td>
                     <td>
-                        <input type="text" name="mail">
+                        <input type="text" name="mail" placeholder="E-mail" id="mail" onkeyup="checkEmail()">
+                    <td>
+                        <p id="mailError"></p>
+                    </td>
                     </td>
 
                 </tr>
 
                 <tr>
                     <td>Age </td>
-                    <td><input type="text" name="age"></td>
-
+                    <td><input type="text" name="age" placeholder="Age" id="age" onkeyup="checkAge()"></td>
+                    <td>
+                        <p id="ageError"></p>
+                    </td>
                 </tr>
 
 
@@ -82,18 +99,25 @@ include("../Control/reg_process.php");
                 <tr>
                     <td> Gender </td>
                     <td>
-                        <input type="radio" name="gender" value="Male">Male
-                        <input type="radio" name="gender" value="Female">Female
-                        <input type="radio" name="gender" value="other">Other
+                        <input type="radio" name="gender" value="Male" id="male" onkeyup="checkGender()">Male
+                        <input type="radio" name="gender" value="Female" id="female">Female
+                        <input type="radio" name="gender" value="other" id="other">Other
                     </td>
+                    <td>
+                        <p id="gndErr"></p>
+                    </td>
+
 
 
                 </tr>
 
+
+             
+
                 <tr>
                     <td>Date of Birth</td>
 
-                    <td><input type="date" name="dob" value="Date of Birth"></td>
+                    <td><input type="date" name="dob" value="Date of Birth" placeholder="Date of birth"></td>
                 </tr>
                 <tr>
                     <td>Please give your NID</td>
@@ -102,6 +126,9 @@ include("../Control/reg_process.php");
 
                     </td>
                 </tr>
+
+
+
             </table>
 
             <br>
@@ -114,15 +141,17 @@ include("../Control/reg_process.php");
 
                 </tr>
             </table>
-            
-            <div align = "center" class="button">
-                <input type="submit" class = "button" name = "showData" value = "Information employee">
-                
+            <br>
+            <div align="center" class="button">
+                <input type="submit" class="button" name="showData" value="Information employee">
+
             </div>
             <br>
+
             <table>
 
                 <td id="haveAcc"> Already Have an account?</td>
+                <br>
                 <td align="center"><a href="../View/logPage.php">Log In </td>
                 </tr>
                 </td>
@@ -137,3 +166,6 @@ include("../Control/reg_process.php");
 
 
 </html>
+
+
+<script src="../js/myjs.js"></script>

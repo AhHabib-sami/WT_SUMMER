@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("../model/db.php");
@@ -8,7 +7,6 @@ $firstName = $password = $name = $emailerr = $age = $gnd = $uname = $var_gender 
 $hasError = 0;
 $id = "CGA101";
 //Next button
-
 
 
 if (isset($_REQUEST["Submit"])) {
@@ -31,6 +29,7 @@ if (isset($_REQUEST["Submit"])) {
 
 
     $uname = $_REQUEST["uname"];
+    $_SESSION["uname"] = $uname;
 
     if (empty($uname)) {
         echo "Please insert your user name";
@@ -42,6 +41,7 @@ if (isset($_REQUEST["Submit"])) {
 
 
     $pass = $_REQUEST["pass"];
+    $_SESSION["pass"] = $pass;
 
     if (empty($pass)) {
         $hasError = 1;
@@ -64,7 +64,7 @@ if (isset($_REQUEST["Submit"])) {
 
             $interest = " " . $_REQUEST["LIT"] . " , " . $_REQUEST["MAT"] . " , " . $_REQUEST["SC"];
         } else if (isset($_REQUEST["LIT"]) && isset($_REQUEST["MAT"])) {
-            $interest = " " . $_REQUEST["LIT"] . ", " . $_REQUEST["MAT"];
+            $interest = " " . $_REQUEST["LIT"] . ", " .  $_REQUEST["MAT"];
         } else if (isset($_REQUEST["LIT"])  && isset($_REQUEST["SC"])) {
             $interest = " " . $_REQUEST["LIT"] . ",  " . $_REQUEST["SC"];
         } else if (isset($_REQUEST["MAT"]) && isset($_REQUEST["SC"])) {
@@ -157,7 +157,7 @@ if (isset($_REQUEST["Submit"])) {
         $mydb = new mydb();
         $conobj = $mydb->openCon();
 
-        $result =  $mydb->insertUser($conobj, "user", $name, $uname, $pass, $pnum, $email, $age, $gnd, $date, $interest, $var_file);
+        $result =  $mydb->insertUser($conobj, "user", $name, $uname, $pass, $pnum, $email, $age, $gnd, $date, $interest, $_FILES["myfile"]["name"]);
 
         if ($result === TRUE) {
             echo "<br>done";
@@ -173,11 +173,6 @@ if (isset($_REQUEST["showData"])) {
 }
 $error = "";
 
-if (isset($_POST["update"])) 
-{
-
-   header("location: ../View/editProfile.php");
-}
 
 
 

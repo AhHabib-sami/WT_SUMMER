@@ -1,6 +1,5 @@
 <?php
-
-include("../Control/reg_process.php");
+include("../model/db.php");
 
 
 if (isset($_REQUEST['update'])) {
@@ -8,44 +7,34 @@ if (isset($_REQUEST['update'])) {
     
     $mydb = new mydb();
     $conobj = $mydb->openCon();
+     $uid =$_REQUEST["id"];
+     $name = $_REQUEST["name"];
+     $usernmae = $_REQUEST["uname"];
+     $password = $_REQUEST["pass"];
+     $Mobile = $_REQUEST["mobile"];
+     $Email = $_REQUEST["mail"];
+     $dob = $_REQUEST["dob"];
+     $age = $_REQUEST["age"];
 
+    $uid = $_REQUEST['id'];
 
-
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE ID='" . $_GET['id'] . "'");
-    $row = mysqli_fetch_array($result);
-
-    $name = $_REQUEST["fname"];
-    $uname = $_REQUEST["uname"];
-    $pass = $_REQUEST["pass"];
-    $Interest = $_REQUEST["LIT"];
-    $email = $_REQUEST["mail"];
-    $age = $_REQUEST["age"];
-    $pnum = $_REQUEST["phone"];
-    $var_file = $_FILES["myfile"]["name"];
-    $des = "../Upload/" . $_FILES["myfile"]["name"];
-    move_uploaded_file($var_file, $des);
-
-    //$userType = $_REQUEST['userType'];
-
-    /*$phoneNumber = $_REQUEST['phoneNumber'];*/
-
-
-
-
-
-    if ($name != null && $uname != null && $pass != null  && $Interest != null && $email != null && $age != null && $pnum != null && $var_file != null) {
-
-
-
-        $result =  $mydb->UpdateUser($conobj, "user", $name, $uname, $pass, $pnum, $email, $age, $gnd, $date, $Interest, $_FILES['myfile']['name']);
-        if ($result) {
-            echo "<font color =green> SUCCESSFUL!";
-        } else {
-            echo "<font color =red> NOT SUCCESSFUL!";
-        }
-    } else {
-        echo "null submission";
+    $mydb = new mydb();
+    $connobj = $mydb->opencon();
+    
+    $result = $mydb->UpdateUser($connobj,"user",$name,$usernmae,$password,$Mobile,$Email,$dob,$uid);
+    if($result)
+    {
+        echo "updated";
     }
-} else if (isset($_REQUEST['back'])) {
-    header('location: ../View/regPage.php');
+    else{
+        echo "not updated";
+    }
+    
 }
+
+if (isset($_REQUEST['back'])) {
+
+    
+    header("location: ../Control/select.php");
+}
+?>
